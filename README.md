@@ -177,6 +177,12 @@ If you don't want to use GitHub Actions:
 
 ---
 
+## Claude Code Skill
+
+If you use [Claude Code](https://claude.ai/claude-code), this repo includes a ready-made skill. Copy the `.claude/skills/supabase-keep-alive/` folder into your project and run `/supabase-keep-alive` — Claude will set up everything automatically.
+
+---
+
 ## License
 
 MIT — use it however you want.
