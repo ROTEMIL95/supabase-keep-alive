@@ -18,9 +18,28 @@ No traffic for a week → Supabase shuts down your database → your app breaks.
 
 A lightweight keep-alive system that pings your database every 3 days:
 
+```mermaid
+flowchart LR
+    A["⏰ GitHub Actions\n(every 3 days)"] -->|"GET /api/keep-alive"| B["🖥️ Your App"]
+    B -->|"SELECT count(*)"| C[("🐘 Supabase DB")]
+    C -->|"✅ 200 OK"| B
+    C -.-|"Activity detected"| D["😴 Pause timer\nresets to 7 days"]
+
+    style A fill:#24292e,color:#fff,stroke:#444
+    style B fill:#0070f3,color:#fff,stroke:#005bb5
+    style C fill:#3ecf8e,color:#fff,stroke:#2ea97a
+    style D fill:#f6c343,color:#333,stroke:#d4a72c
 ```
-Every 3 days:
-GitHub Actions → GET /api/keep-alive → DB query → Supabase stays alive
+
+### Without Keep-Alive
+```mermaid
+flowchart LR
+    A["📅 7 days\nno traffic"] -->|"timeout"| B["⛔ Supabase\npauses DB"]
+    B --> C["💥 App crashes"]
+
+    style A fill:#666,color:#fff
+    style B fill:#e74c3c,color:#fff
+    style C fill:#c0392b,color:#fff
 ```
 
 **3 files. 0 cost. Fully automated.**
