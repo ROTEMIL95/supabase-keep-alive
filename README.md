@@ -44,6 +44,8 @@ flowchart LR
 
 **3 files. 0 cost. Fully automated.**
 
+![Keep-Alive Success](assets/keep-alive-success.png)
+
 ---
 
 ## Setup (Next.js + GitHub Actions)
